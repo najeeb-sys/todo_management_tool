@@ -1,0 +1,116 @@
+package com.najeeb.todomanagementtool.model;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Type;
+
+@Entity
+@Table(name = "todos")
+public class Todo {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+
+	private String userName;
+
+	@Size(min = 10, message = "Enter at least 10 Characters...")
+	private String description;
+
+	@Future
+	private Date targetDate;
+	
+
+	private Date creationDate;
+	
+	//@Column(name = "isTaskDone", nullable = false, columnDefinition = "tinyint(1) default 0")
+	//@Type(type="org.hibernate.type.NumericalBooleanType")
+	//private boolean  Done;
+
+	private String status;
+	
+
+	public Todo() {
+		super();
+	}
+
+	public Todo(String user, String desc, Date targetDate,Date creationDate, String status, boolean isDone) {
+		super();
+		this.userName = user;
+		this.description = desc;
+		this.targetDate = targetDate;
+		this.creationDate = creationDate;
+     	this. status = status;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Date getTargetDate() {
+		return targetDate;
+	}
+
+	public void setTargetDate(Date targetDate) {
+		this.targetDate = targetDate;
+	}
+	
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+
+	/*
+	public boolean isDone() {
+		return Done;
+	}
+
+	public void setDone(boolean done) {
+		Done = done;
+	}
+
+*/
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+
+}

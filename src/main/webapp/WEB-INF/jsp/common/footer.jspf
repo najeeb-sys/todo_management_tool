@@ -1,0 +1,23 @@
+<script src="${contextPath}/resources/js/jquery-3.3.1.min.js"></script>
+<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+<script src="${contextPath}/resources/js/bootstrap-datepicker.js"></script>
+ 
+<script>
+	$('#targetDate').datepicker({
+		autoclose: true, 
+        todayHighlight: true,
+		format : 'dd/mm/yyyy'
+	});
+</script>
+
+
+<div class="footer clear">
+	<h1>
+		<a href="https://github.com/najeeb-sys/Test" target="_blank" style="color:white">
+			Click Here for The source code</a>
+	</h1>
+</div>
+
+
+</body>
+</html>
