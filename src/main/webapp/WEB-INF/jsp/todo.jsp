@@ -9,6 +9,7 @@
 					<form:form method="post" modelAttribute="todo">
 					
 						<form:hidden path="id" />
+				 <form:hidden path="${_csrf.parameterName}" value="${_csrf.token}"/>
 						
 						<fieldset class="form-group">
 							<form:label path="description">Description</form:label>

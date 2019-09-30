@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import com.najeeb.todomanagementtool.model.User;
+import com.najeeb.todomanagementtool.service.SecurityService;
 import com.najeeb.todomanagementtool.service.UserService;
 import com.najeeb.todomanagementtool.validator.UserValidator;
 
@@ -15,8 +16,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-   // @Autowired
-   // private SecurityService securityService;
+    @Autowired
+    private SecurityService securityService;
 
     @Autowired
     private UserValidator userValidator;
@@ -38,9 +39,11 @@ public class UserController {
 
         userService.save(userForm);
 
-      //  securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
+      securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
 
-        return "redirect:/welcome";
+       return "redirect:/welcome";
+       // return "redirect:/login";
+
     }
 
     @GetMapping("/login")
