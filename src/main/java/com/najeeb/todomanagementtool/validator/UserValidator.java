@@ -1,5 +1,7 @@
 package com.najeeb.todomanagementtool.validator;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -14,6 +16,8 @@ public class UserValidator implements Validator {
     @Autowired
     private UserService userService;
 
+	private static final Logger logger = LoggerFactory.getLogger
+			(UserValidator.class);
     @Override
     public boolean supports(Class<?> aClass) {
         return User.class.equals(aClass);
@@ -22,6 +26,8 @@ public class UserValidator implements Validator {
     @Override
     public void validate(Object o, Errors errors) {
         User user = (User) o;
+
+        logger.debug(String.format("VALIDATING user ::  %s !", user.getUsername()));
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
         if (user.getUsername().length() < 6 || user.getUsername().length() > 32) {
